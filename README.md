@@ -115,7 +115,7 @@ source .venv/bin/activate
 ### 3) Instal·lar dependencies
 
 ```bash
-pip install torch pillow gradio "transformers[sentencepiece]"
+pip install -r requirements.txt
 ```
 
 ### 4) Arrencar l'app
@@ -139,5 +139,5 @@ gradio_image_bot/
 |- .venv/
 |- app.py
 |- README.md
-|- Statement.pdf
+|- requirements.txt
 ```
