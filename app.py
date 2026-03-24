@@ -68,11 +68,14 @@ def classificar_imatge(image):
 
         # Get top 5 predictions
         probs = F.softmax(outputs.logits, dim=-1)[0]
+
         top5_probs, top5_ids = torch.topk(probs, 5)
+
         top5_labels = [model.config.id2label[idx.item()] for idx in top5_ids]
+
         top5_scores = [round(p.item(), 4) for p in top5_probs]
 
-        # Accumulate confidence per category (keys from CATEGORIES_RESIDUS)
+        # Agafa la informacio sobre les categories i suma les confiançes per cada categoria
         category_scores = {cat: 0.0 for cat in CATEGORIES_RESIDUS.keys()}
         for label, score in zip(top5_labels, top5_scores):
             categoria = mapejar_a_categoria_residu(label)
